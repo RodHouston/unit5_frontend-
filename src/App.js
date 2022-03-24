@@ -4,10 +4,12 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Add from './components/Add.js'
 import Edit from './components/Edit.js'
+import AddHome from './components/addHome.js'
 
 const App = () => {
 
   let [people, setPeople] = useState([])
+  let [homes, setHomes] = useState([])
 
 
   const getPeople = () => {
@@ -15,6 +17,15 @@ const App = () => {
      .get('https://fathomless-mesa-16523.herokuapp.com/api/users')
      .then(
        (response) => setPeople(response.data),
+       (err) => console.error(err)
+     )
+     .catch((error) => console.error(error))
+  }
+  const getHomes = () => {
+   axios
+     .get('https://fathomless-mesa-16523.herokuapp.com/api/homes')
+     .then(
+       (response) => setHomes(response.data),
        (err) => console.error(err)
      )
      .catch((error) => console.error(error))
@@ -33,6 +44,14 @@ const App = () => {
       .then((response) => {
         console.log(response)
         getPeople()
+      })
+  }
+  const handleCreateHome = (addHome) => {
+    axios
+      .post('https://fathomless-mesa-16523.herokuapp.com/api/homes', addHome)
+      .then((response) => {
+        console.log(response)
+        getHomes()
       })
   }
 
@@ -62,10 +81,24 @@ const App = () => {
               <button onClick={handleDelete} value={person.id}>
                 X
               </button>
+
+            </div>
+          )
+        })}
+        <AddHome handleCreate={handleCreateHome} />
+        {homes.map((person) => {
+          return (
+            <div className="person" key={person.id}>
+              <h4>Name: {person.name}</h4>
+              <h5>Age: {person.age}</h5>
+
+
+
             </div>
           )
         })}
       </div>
+
     </>
   )
 }
