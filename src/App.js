@@ -126,16 +126,16 @@ const App = () => {
   }, [])
 
 
-  if(!token) {
-    return <Login setToken={setToken} />
-  }
+  // if(!token) {
+  //   return <Login setToken={setToken} />
+  // }
 
 
   return (
     <>
     <div className='mainDiv'>
 
-        <BrowserRouter>
+
           <header className='header'>
             <Nav/>
           </header>
@@ -157,7 +157,7 @@ const App = () => {
 
             </Routes>
           </div>
-        </BrowserRouter>
+
 
     </div>
 
