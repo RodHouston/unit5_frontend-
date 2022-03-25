@@ -22,9 +22,9 @@ let [people, setPeople] = useState([])
     <>
     <h1>this is Home Show Page</h1>
     <div className="people">
-        <div className="person" key={person.id}>
-          <h4>Name: {person.id}</h4>
-        </div>    
+        <div className="person" key={people.id}>
+          <h4>Name: {people.id}</h4>
+        </div>
     </div>
     </>
   )
