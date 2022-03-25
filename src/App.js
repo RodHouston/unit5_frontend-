@@ -55,6 +55,7 @@ const App = () => {
      )
      .catch((error) => console.error(error))
   }
+
   const getHomes = () => {
    axios
      .get('https://serene-forest-42655.herokuapp.com/api/homes')

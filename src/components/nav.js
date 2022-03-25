@@ -7,12 +7,13 @@ export const Nav = (props) => {
 
 
 
-
+// <a href="http://localhost:8000/accounts/login/">LOG</a>
 
   return (
     <>
       <header className="header">
         <div className="nav">
+
           <a href="https://serene-forest-42655.herokuapp.com/accounts/login/">LOG</a>
           <NavLink className="links" id='firstLink' to="/">
             Login
