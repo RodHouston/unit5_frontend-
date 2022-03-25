@@ -22,15 +22,9 @@ let [people, setPeople] = useState([])
     <>
     <h1>this is Home Show Page</h1>
     <div className="people">
-      {people.map((person) => {
-        return (
-          <div className="person" key={person.id}>
-            <h4>Name: {person.id}</h4>
-
-
-          </div>
-        )
-      })}
+        <div className="person" key={person.id}>
+          <h4>Name: {person.id}</h4>
+        </div>    
     </div>
     </>
   )
