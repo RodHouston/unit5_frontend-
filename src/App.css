@@ -2,14 +2,52 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+#root{
+  background-image: url('../public/bg1.jpeg');
 
 }
 .header{
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 150px;
   background-color: rgba(2, 16, 48, .5);
 }
+.headerTop{
+  display: flex;
+  width: 100%;
+  padding-top: 20px;
+  /* background-color: red; */
+}
+.headerTopLeft{
+  width:calc(100% / 3);
+  height: 100%;
+  /* background-color: yellow; */
+}
+.headerTopMid{
+  text-align: center;
+  padding: 20px;
+  width: calc(100% / 3);
+  height: 100%;
+
+  /* background-color: purple; */
+}
+
+.socialLinkDivHead{
+  width: calc(100% / 3);
+  height: 100%;
+  /* background-color: green; */
+  text-align: center;
+  /* margin-top: 30px; */
+  margin-left: auto;
+  margin-right: 20px
+}
+.socialLinkDivHead p{
+  color: rgba(55, 115, 0, 1);
+  margin: 10px;
+}
+
 .nav{
   display: flex;
   width: 100%;
@@ -27,10 +65,22 @@
   color: white;
   border-left: 2px solid white;
 }
-#firstLink{
+.links.active {
+  color: white;
+  background:rgba(55, 115, 0, 1);
+
+}
+.links:hover{
+  text-decoration: underline;
+  background:rgba(55, 115, 0, .5);
+}
+.topLink{
+  color: rgba(55, 115, 0, 1);
+  border-left: 2px solid rgba(55, 115, 0, 1);
+}
+.firstLink{
   border: 0;
 }
-
 
 /* ======HOME PAGE====== */
 .container1{
@@ -64,7 +114,7 @@
   background-color: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(3px);
   margin:50px auto;
-  margin-top: 175px;
+  margin-bottom: 175px;
   color:white;
   text-align:center;
 }
@@ -78,16 +128,23 @@
   border: none;
   margin: 10px;
   padding: 10px 20px;
-  border-radius: 5px;
   font-weight: bold;
-  transition: 500ms ease;
+  transition: all 250ms ease;
+  border: 2px solid rgba(55, 115, 0, 1);
+  outline: 2px solid rgba(55, 115, 0, 1);
+  color: rgb(187, 187, 187);
   background-color: rgba(55, 115, 0, 1);
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.8)
 }
 .btn1:hover{
-  transform: scale(1.1);
+  /* transform: scale(1.05); */
+  color: black;
+  border-radius: 2px;
+  outline: 2px solid rgba(91, 191, 0, 1);
+  outline-offset: 4px;
   background-color: rgba(91, 191, 0, 1);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8)
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+  cursor:pointer;
 }
 
 .secondDiv{
@@ -131,6 +188,7 @@ background-size: 100% 100%;
   transition: 800ms ease;
 }
 .fadeBox:hover{
+  cursor: pointer;
   background-color: rgba(55, 115, 0, .8);
 }
 .boxText{
@@ -158,4 +216,393 @@ background-size: 100% 100%;
   padding: 50px;
   line-height:2;
   background-color: rgb(187, 187, 187);
+}
+
+
+/* ====HOUSE CARD===== */
+
+.houseCard{
+  width: 350px;
+  height: 550px;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(3px);
+  border: 2px solid rgba(69, 69, 69, .5);
+  margin: 10px;
+  transition: 500ms ease;
+  /* animation-name: slideIn; */
+  animation-duration: 3s;
+  overflow: hidden;
+}
+.houseCard:hover{
+  transform: scale(1.05);
+  background-color: rgba(0, 0, 0, 0.6);
+  /* background-color: rgb(187, 187, 187); */
+}
+@keyframes slideIn {
+  from {height:0}
+  to {height: 550px}
+}
+
+.houseCardPhotoDiv{
+  display: flex;
+  width: 346px;
+  height: 250px;
+  background-color: rgb(187, 187, 187);
+}
+.houseMainPhoto{
+  min-width: 100%;
+  min-height: 100%;
+  margin: auto;
+}
+.houseCardInfo{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 300px;
+  font-weight: normal;
+  line-height: 1.5;
+  /* background-color: red; */
+  padding: 20px;
+}
+.btn2{
+  border: none;
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px 20px;
+  /* border-radius: 5px; */
+  font-weight: bold;
+  transition: all 500ms ease;
+  border: 2px solid rgba(55, 115, 0, 1);
+  outline: 2px solid rgba(55, 115, 0, 1);
+  outline-offset: -2px;
+  background-color: rgba(55, 115, 0, 1);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.8)
+}
+.btn2:hover{
+  /* width: 100%; */
+  outline: 2px solid rgba(91, 191, 0, 1);
+  outline-offset: 4px;
+  background-color: rgba(91, 191, 0, 1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+  cursor:pointer;
+}
+.colorText{
+  color: rgba(55, 115, 0, 1);
+}
+/* ======BrowseHomes==== */
+.homesDiv{
+  display: flex;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+
+}
+.homesDiv2{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 20px auto;
+  /* background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px); */
+}
+.searchHomesDiv{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 150px;
+  background-color: rgba(55, 115, 0, 1);
+  transition: 1s ease;
+  text-align: center;
+  overflow: hidden;
+}
+.searchTitle{
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 30px;
+  padding: 10px;
+  transition: 1s ease;
+  text-align: center;
+  margin: auto;
+}
+.sTitle{
+  display: flex;
+  /* position: absolute; */
+  width: 100%;
+  transition: all 1s ease;
+  text-align: center;
+  margin: auto;
+  cursor: pointer;
+}
+.sTitle:hover{
+  color: rgba(187, 187, 187, 1)
+}
+.iconArrow{
+  width: 25px;
+  height: 25px;
+  /* margin-left: auto; */
+}
+.homeBox{
+  margin: auto;
+}
+.searchHomesDivEffect{
+  width: 100%;
+  height: 100%;
+
+}
+.searchForm{
+
+  margin: 30px auto;
+}
+
+/* ====ADD HOME==== */
+.addHomesDiv{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 250px;
+  background-color: rgba(55, 115, 0, 1);
+}
+.addForm{
+  margin: auto;
+}
+.pair{
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+}
+.set{
+  display: flex;
+  flex-direction: row;
+  margin: 10px auto;
+
+}
+.input2{
+
+}
+/* ====SHOW PAGE ==== */
+.showDiv{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+
+}
+
+
+.houseCardShow{
+  width: 80%;
+  height: 100%;
+  /* background-color: yellow; */
+  border: 2px solid rgba(69, 69, 69, .5);
+  margin: 50px auto;
+
+}
+.houseCardPhotoDivShow{
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-height: 100%;
+  background-color: rgb(187, 187, 187);
+
+}
+.morePhotos{
+  position: absolute;
+ right: 20px;
+ bottom: 20px;
+ color: rgb(187, 187, 187);
+}
+.houseMainPhotoShow{
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+.showDetailDiv{
+  width: 100%;
+  min-height: 200px;
+  text-align: center;
+  color: rgb(187, 187, 187);
+  padding: 30px;
+  flex-grow: 1;
+  border-bottom: 2px solid rgba(55, 115, 0, 1);
+  background-color: rgba(0, 0, 0, 0.35);
+
+}
+.showDetailDivEffect{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.35);
+  animation-name: fadeIn;
+  animation-duration: .5s;
+}
+@keyframes fadeIn {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+.houseCardInfoShow{
+  display: flex;
+  flex-direction:row;
+  width: 100%;
+  height: 150px;
+  font-weight: normal;
+  line-height: 1.5;
+  background-color: rgba(187, 187, 187, .8);
+  color: rgba(0, 0, 0, .8);
+  padding: 20px;
+}
+.houseCardInfoShowLeft, .houseCardInfoShowRight{
+  margin: auto;
+
+  /* background-color: yellow; */
+}
+.showBottomDiv{
+  width: 100%;
+  height: 200px;
+  /* background-color: red; */
+}
+.socialLinkDiv{
+  display: flex;
+  width: 100%;
+  height: 50px;
+  /* background-color: white; */
+  margin: auto;
+}
+.icons{
+  width: 25px;
+  height: 25px;
+  margin: auto 10px;
+  color: rgba(55, 115, 0, 1);
+}
+/* =====SERVICES ===== */
+.servicesDiv{
+  width: 100%;
+  height: 100%;
+  /* background-color: red; */
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+}
+.servicesBoxDiv{
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  padding: 10px;
+  justify-content: center;
+  background-color: rgba(187, 187, 187, 1);
+}
+.servicesBoxDivTop{
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  height: 200px;
+  margin: auto;
+  padding: 10px;
+  justify-content: center;
+  background-color: rgba(187, 187, 187, 1);
+}
+.servicesTitle{
+  display: flex;
+  width: 90%;
+  margin: 40px auto;
+  justify-content: center;
+  align-items: center;
+  border-top: 3px solid rgba(55, 115, 0, 1);
+  border-bottom: 3px solid rgba(55, 115, 0, 1);
+}
+.servicesBox{
+  width: 300px;
+  height: 300px;
+  margin: 10px ;
+  color: rgba(187, 187, 187, 1);
+  background-size: cover;
+  border: 2px solid rgba(55, 115, 0, 1);
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  transition: 500ms ease;
+}
+.servicesBoxEffect{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.servicesBox:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
+/* ===REGISTER PAGE=== */
+.registerBox{
+  display: flex;
+  height: 100vh;
+  /* background-color: red; */
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+}
+.regFormBox{
+  display: flex;
+  width: 80%;
+  min-height: 80%;
+  margin: auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+.formReg{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+  line-height: 2;
+  color: rgba(187, 187, 187, 1);
+}
+.regImgPre{
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  border: 5px solid rgba(55, 115, 0, 1);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
+}
+
+.inputReg{
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  padding: 5px;
+  color: rgba(187, 187, 187, 1);
+  background-color: rgba(0, 0, 0, 0.45);
+  border-bottom: 2px solid rgba(55, 115, 0, 1);
+}
+
+.pair2{
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+
+}
+.inputReg2{
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  padding: 5px;
+  color: rgba(187, 187, 187, 1);
+  background-color: rgba(0, 0, 0, 0.45);
+  border-bottom: 2px solid rgba(55, 115, 0, 1);
+}
+.regSet{
+  display: flex;
+  width: 100%;
+  flex-wrap:  wrap;
+  padding: 0 20px
+  /* margin: 0 20px; */
+}
+
+.password{
+  margin-left: auto;
 }

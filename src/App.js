@@ -7,16 +7,17 @@ import Edit from './components/Edit.js'
 import AddHome from './pages/addHome'
 import  AddPhoto from './components/addPhotos.js'
 import { Nav } from "./components/nav";
-import { Login } from "./pages/login";
+// import { Login } from "./pages/login";
 import { BrowseHomes } from "./pages/browseHomes";
 import { HomeShow } from "./pages/homeShow";
 import { OwnersPortal } from "./pages/OwnersPortal";
 import { Home} from "./pages/home";
+import { Register} from "./pages/Register";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Dashboard from './components/Dashboard/Dashboard';
-import Preferences from './components/Preferences/Preferences';
-// import Login from './components/Login/Login';
+import Services from './components/Services/Services';
+import About from './components/About/About';
+import Login from './components/Login/Login';
 import useToken from './components/App/useToken';
 
 
@@ -144,15 +145,16 @@ const App = () => {
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route exact path="/login" element={<Login />} />
+              <Route exact path="/register" element={<Register/>} />
               <Route exact path="/browse" element={<BrowseHomes />} />
               <Route exact path="/show" element={<HomeShow/>} />
               <Route exact path="/owner_portal" element={<OwnersPortal/>} />
               <Route exact path="/addHome" element={<AddHome/>} />
 
 
-              <Route path="/dashboard" element={<Dashboard/>}/ >
+              <Route path="/services" element={<Services/>}/ >
 
-              <Route path="/preferences" element={<Preferences />}/>
+              <Route path="/about" element={<About />}/>
 
 
 

@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 
 async function loginUser(credentials) {
- return fetch('https://serene-forest-42655.herokuapp.com/accounts/login/', {
+  console.log('this is user '+ credentials);
+
+ return fetch('https://serene-forest-42655.herokuapp.com/currentuser/', {
    method: 'POST',
    headers: {
      'Content-Type': 'application/json'
