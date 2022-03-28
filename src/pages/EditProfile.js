@@ -26,7 +26,7 @@ export const EditProfile = () => {
 
   const getProfile = () => {
    axios
-     .get('http://127.0.0.1:8000/api/profile')
+     .get('https://serene-forest-42655.herokuapp.com/api/profile')
      .then(
        (response) => setProfiles(response.data),
        (err) => console.error(err)
@@ -36,7 +36,7 @@ export const EditProfile = () => {
   }
   const handleCreateProfile = (addProfile) => {
     axios
-      .post('http://127.0.0.1:8000/api/profile', addProfile)
+      .post('https://serene-forest-42655.herokuapp.com/api/profile', addProfile)
       .then((response) => {
         console.log(response)
         getProfile()

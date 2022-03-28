@@ -16,7 +16,7 @@ const SignupForm = Userfront.build({
 async function regUser(credentials) {
    console.log('inside regUser');
  // return fetch('https://serene-forest-42655.herokuapp.com/currentuser/', {
- return fetch('http://127.0.0.1:8000/api/users/', {
+ return fetch('https://serene-forest-42655.herokuapp.com/api/users', {
     method: 'POST',
     headers: {
      'Content-Type': 'application/json'
