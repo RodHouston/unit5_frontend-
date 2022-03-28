@@ -34,10 +34,10 @@ const HouseCard= (props) => {
           <img className="houseMainPhoto" src={home.coverphoto} />
         </div>
         <div className='houseCardInfo'>
-          <h2><span className='colorText'>Rent: $$$$$$ </span>/Month</h2>
-          <h4 className='colorText'>Bed: 4 bed(s)</h4>
-          <h4 className='colorText'>Bath: 2 bath(s)</h4>
-          <h4 className='colorText'>Garage: 2 car</h4>
+          <h2><span className='colorText'>Rent: {home.rent} </span>/Month</h2>
+          <h4 className='colorText'>Bed: {home.beds} bed(s)</h4>
+          <h4 className='colorText'>Bath: {home.baths} bath(s)</h4>
+          <h4 className='colorText'>Garage: {home.garage} car</h4>
           <h4>Street: {home.street}</h4>
           <h4>City: {home.city}</h4>
           <h4>State: {home.state}</h4>

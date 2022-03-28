@@ -58,6 +58,9 @@ export const Nav = (props) => {
           <NavLink className="links" to="/about">
                 About
           </NavLink>
+          <NavLink className="links" to="/editProfile">
+                EditProfile
+          </NavLink> 
         </div>
       </header>
     </>

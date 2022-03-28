@@ -8,11 +8,13 @@ import AddHome from './pages/addHome'
 import  AddPhoto from './components/addPhotos.js'
 import { Nav } from "./components/nav";
 // import { Login } from "./pages/login";
+import { EditProfile} from "./pages/EditProfile";
 import { BrowseHomes } from "./pages/browseHomes";
 import { HomeShow } from "./pages/homeShow";
 import { OwnersPortal } from "./pages/OwnersPortal";
 import { Home} from "./pages/home";
 import { Register} from "./pages/Register";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Services from './components/Services/Services';
@@ -21,17 +23,16 @@ import Login from './components/Login/Login';
 import useToken from './components/App/useToken';
 
 
-function setToken(userToken) {
-  sessionStorage.setItem('token', JSON.stringify(userToken));
-}
-
-function getToken() {
-  const tokenString = sessionStorage.getItem('token');
-  const userToken = JSON.parse(tokenString);
-  return userToken?.token
-}
-
-
+// function setToken(userToken) {
+//   sessionStorage.setItem('token', JSON.stringify(userToken));
+// }
+//
+// function getToken() {
+//   const tokenString = sessionStorage.getItem('token');
+//   const userToken = JSON.parse(tokenString);
+//   return userToken?.token
+// }
+//
 
 
 const App = () => {
@@ -41,8 +42,21 @@ const App = () => {
   let [photos, setPhotos] = useState([])
 
 
-  const { token, setToken } = useToken();
+  const [ token, setToken ] = useState('');
 
+  const [ userToken, setUserToken ] = useState(sessionStorage.getItem('name'));
+
+
+  const userLogin = (tok) => {
+    sessionStorage.setItem('token', JSON.stringify(tok));
+    sessionStorage.setItem('name', 'rossss');
+    const tokenString = sessionStorage.getItem('name');
+    const userToke = JSON.parse(tokenString);
+    setToken(tok)
+    setUserToken(userToke)
+    console.log('this it app token '+ userToken);
+    // console.log('this it app token '+ token);
+  }
 
 
 
@@ -131,7 +145,7 @@ const App = () => {
   // if(!token) {
   //   return <Login setToken={setToken} />
   // }
-
+ // <Route exact path="/register" element={<Register/>} />
 
   return (
     <>
@@ -144,12 +158,16 @@ const App = () => {
           <div className="container1">
             <Routes>
               <Route exact path="/" element={<Home />} />
-              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/login" element={<Login userLogin={userLogin} />} />
               <Route exact path="/register" element={<Register/>} />
+
               <Route exact path="/browse" element={<BrowseHomes />} />
               <Route exact path="/show" element={<HomeShow/>} />
-              <Route exact path="/owner_portal" element={<OwnersPortal/>} />
+              <Route exact path="/owner_portal" element={<OwnersPortal token= {userToken}/>} />
+              // <Route exact path="/dashboard" element={<OwnersPortal/>} />
               <Route exact path="/addHome" element={<AddHome/>} />
+
+              <Route exact path="/editProfile" element={<EditProfile/>} />
 
 
               <Route path="/services" element={<Services/>}/ >
