@@ -11,7 +11,7 @@ export default function Login(props) {
 
   async function loginUser(credentials) {
    // return fetch('https://serene-forest-42655.herokuapp.com/currentuser/', {
-   return fetch('http://127.0.0.1:8000/auth/', {
+   return fetch('https://serene-forest-42655.herokuapp.com/api/profile/', {
       method: 'POST',
       headers: {
        'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ export default function Login(props) {
         <div>
           <button type="submit">Submit</button>
         </div>
-        
+
       </form>
     </div>
   )
