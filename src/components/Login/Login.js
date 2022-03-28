@@ -11,7 +11,7 @@ export default function Login(props) {
 
   async function loginUser(credentials) {
    // return fetch('https://serene-forest-42655.herokuapp.com/currentuser/', {
-   return fetch('https://serene-forest-42655.herokuapp.com/api/auth/', {
+   return fetch('https://serene-forest-42655.herokuapp.com/auth/', {
       method: 'POST',
       headers: {
        'Content-Type': 'application/json'
