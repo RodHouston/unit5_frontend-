@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -112,13 +112,7 @@ export const Register = () => {
 
     })
 }catch (err) {
-    if (!err?.response) {
-        setErrMsg('No Server Response');
-    } else if (err.response?.status === 400) {
-        setErrMsg('Username Taken');
-    } else {
-        setErrMsg('Registration Failed')
-    }
+    
     errRef.current.focus();
 }
 
@@ -185,8 +179,8 @@ export const Register = () => {
       setValidPwd(PWD_REGEX.test(password));
       setValidMatch(password === confirmPass);
   }, [password, confirmPass])
-  return (
-    <>
+
+  return (    <>
     <div className='registerBox' >
       <div className='regFormBox' >
         <h1>Please Sign Up</h1>

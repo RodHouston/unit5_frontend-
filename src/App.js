@@ -147,7 +147,7 @@ const App = () => {
   }, [])
   return (
     <>
-      <div className='mainDiv'>
+      <div className='mainDiv' style={{backgroundImage: `url('./bg1.jpeg')`}}>
         <header >
           <Nav/>
         </header>

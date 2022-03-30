@@ -15,8 +15,7 @@ font-family: 'Cabin', sans-serif;
 font-family: 'Cormorant Garamond', serif;
 <Footer/> */
 #root{
-  background-image: url('../public/bg1.jpeg');
-  background-attachment: fixed;
+
 }
 h1, h2{
   font-family: 'EB Garamond', serif;
@@ -24,6 +23,13 @@ h1, h2{
 p{
   font-weight: bold;
   font-family: 'Cabin', sans-serif;
+}
+
+.mainDiv{
+  width: 100%;
+  background-size: 100% ;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .center{
   margin: 0 auto;
@@ -162,7 +168,7 @@ p{
   background-color: yellow;
   z-index: -2;
   background-color: rgba(0, 0, 0, 0.45);
-  background-image: url('../public/bg1.jpeg');
+
   background-size: auto;
 }
 .topCarouselEffect{
