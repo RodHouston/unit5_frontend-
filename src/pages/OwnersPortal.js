@@ -1,18 +1,16 @@
 
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from "react-router-dom";
-import Userfront from "@userfront/react";
-import { UserContext } from '../components/contexts/userContext'
-import HouseCard from '../components/houseCard'
 import axios from 'axios'
 import { BiArrowFromTop, BiArrowFromBottom, BiMessageDots } from 'react-icons/bi';
 import TextTransition, { presets } from "react-text-transition";
 import { Footer } from "../components/footer";
 
 
+
 const TEXTS = [
   "PROPERTY",
-  "FINIANCES ",
+  "FINANCES ",
   "SERVICES",
   "LIFE"
 ];
@@ -40,6 +38,10 @@ export const OwnersPortal = (props) => {
     const show = () => {
       setToggle((prevState) => !prevState);
     }
+
+    const [matches, setMatches] = useState(
+      window.matchMedia("(min-width: 950px)").matches
+    );
 
     const getPeople = () => {
      axios
@@ -111,6 +113,9 @@ export const OwnersPortal = (props) => {
       2000
     );
     return () => clearTimeout(intervalId);
+    window
+      .matchMedia("(min-width: 950px)")
+      .addEventListener("change", (e) => setMatches(e.matches));
   }, [])
 
 
@@ -149,6 +154,7 @@ export const OwnersPortal = (props) => {
                             |
                             <span className='editLink addPropLink' onClick={(e) => navigate('/addHome', {state:pro})}>Add Property</span>
                           </p>
+
                         <div className="search-container">
                         <form className='messageForm'>
                           <input className='messageInput input2' type="text" placeholder="Quick Message" name="search"/>
@@ -195,6 +201,7 @@ export const OwnersPortal = (props) => {
                               <div className="serviceItems">24/7 MAINTENANCE</div>
                             </div>
                           </div>
+                          {!matches ?   null :<>
                           <div className="gridSet">
                             <div className="gridPair">
                               <div className="serviceItems">PROPERTY TURNOVER MANAGEMENT</div>
@@ -204,8 +211,8 @@ export const OwnersPortal = (props) => {
                               <div className="serviceItems">LAWN CARE</div>
                               <div className="serviceItems">DEDICATED POINT OF CONTACT</div>
                             </div>
-
-                            </div>
+                          </div>
+                          </>}
                           </div>
                         </div>
                       </div>
@@ -230,6 +237,7 @@ export const OwnersPortal = (props) => {
                         </div>
                       ))}
                     </div>
+
                   </div>
                 </div>
               </>

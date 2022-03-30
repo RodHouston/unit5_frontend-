@@ -1,18 +1,27 @@
-import { NavLink, Link, useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import { NavLink } from "react-router-dom";
+import React, { useState, useEffect} from 'react'
+import { useNavigate } from "react-router-dom";
 import { FaFacebookSquare, FaTwitterSquare, FaPinterestSquare, FaLinkedin, FaGithubSquare} from 'react-icons/fa'
-import { MdHomeWork, MdRealEstateAgent} from 'react-icons/md';
+import { MdRealEstateAgent} from 'react-icons/md';
 
 export const Nav = (props) => {
+
+
 
   const [matches, setMatches] = useState(
     window.matchMedia("(min-width: 950px)").matches
   );
 
+  let navigate = useNavigate();
 
+  const logOut =() => {
+    sessionStorage.setItem("name", ' ');
+    sessionStorage.setItem("id", ' ');
+    navigate('/')
+  }
+  console.log(sessionStorage.getItem('id'));
   useEffect(() => {
-
+    console.log(sessionStorage.getItem('id'));
     window
       .matchMedia("(min-width: 950px)")
       .addEventListener("change", (e) => setMatches(e.matches));
@@ -87,10 +96,9 @@ export const Nav = (props) => {
         <NavLink className="links" to="/about">
               About
         </NavLink>
-        <NavLink className="links" to="/editProfile">
-              EditProfile
-        </NavLink>
-        <button className='btn1 logOutBtn'>Logout</button>
+        {sessionStorage.getItem('id') ===' ' || sessionStorage.getItem('id') ===null ?  null:
+        <button className='btn1 logOutBtn' onClick={logOut}>Logout</button>
+        }
       </div>
     </div>
   </>

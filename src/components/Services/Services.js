@@ -8,16 +8,16 @@ export default function Services() {
 
   const TEXTS = ['PROVIDING EASE OF LIFE', 'PEACE OF MIND',
   "PROPERTY INVESTMENTS",
-  "FINIANCES AND COLLECTIONS",
+  "FINANCES AND COLLECTIONS",
   "MULTIPLE SERVICES",
   "POLICIES"
   ]
 
 
-const randomNumber = () => Math.floor(Math.random() * 5 - 1)
+
   const [index, setIndex] = useState(0);
-  const [index2, setIndex2] = useState(0);
-  const [texts, setText] = useState(TEXTS[3]);
+
+
 
   useEffect(() => {
 
@@ -66,7 +66,7 @@ const randomNumber = () => Math.floor(Math.random() * 5 - 1)
           </div>
           <div className='servicesBox' style={{backgroundImage: `url('../../service3.jpeg')`}}>
             <div className='servicesBoxEffect'>
-                <h2>Remodelling Services</h2>
+                <h2>Remodeling Services</h2>
             </div>
           </div>
           <div className='servicesBox' style={{backgroundImage: `url('../../service4.jpeg')`}}>
@@ -81,7 +81,7 @@ const randomNumber = () => Math.floor(Math.random() * 5 - 1)
           </div>
           <div className='servicesBox' style={{backgroundImage: `url('../../service6.webp')`}}>
             <div className='servicesBoxEffect'>
-                <h2>Realistate and Market Strategies</h2>
+                <h2>Real Estate and Market Strategies</h2>
             </div>
           </div>
 

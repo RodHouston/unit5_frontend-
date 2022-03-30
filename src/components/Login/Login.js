@@ -9,7 +9,7 @@ export default function Login(props) {
   const [people, setPeople] = useState([])
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
-  const [curUser, setCurUser] = useState()
+
 
   let navigate = useNavigate();
 
@@ -25,6 +25,7 @@ export default function Login(props) {
   }
 
   async function loginUser(credentials) {
+
    // return fetch('https://serene-forest-42655.herokuapp.com/currentuser/', {
    return fetch("https://serene-forest-42655.herokuapp.com/auth/", {
       method: "POST",
@@ -32,10 +33,13 @@ export default function Login(props) {
        "Content-Type": "application/json"
     },
       body: JSON.stringify(credentials)
-    }).then((response) => {
+    }).then((response) => {;
       if (response.ok){
         return people.map((peep) => {
-          if(peep.username == username){
+          console.log('pressed '+ peep.username)
+        
+          if(peep.username === username){
+
             console.log('we in here  ' + peep.username);
             sessionStorage.setItem("name", peep.username);
             sessionStorage.setItem("id", peep.id);
@@ -55,6 +59,7 @@ export default function Login(props) {
 
   const handleSubmit = async e => {
     e.preventDefault();
+
     const token = await loginUser({
       username,
       password

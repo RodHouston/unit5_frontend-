@@ -5,6 +5,7 @@ import { MdHomeWork, MdRealEstateAgent} from 'react-icons/md';
 import {FaReact, FaNode} from 'react-icons/fa';
 import {DiDjango, DiPostgresql} from 'react-icons/di';
 import { Footer } from "../components/footer";
+import { HiOutlineArrowCircleDown} from 'react-icons/hi';
 
 export const Home = (props) => {
 
@@ -12,7 +13,7 @@ let navigate = useNavigate();
 
 const [index, setIndex] = React.useState(0);
 
-const TITLES= ["LIVE STRESS FREE", "LEASE GAURENTEES", "FINIANCES HANDELED", "TOP SERVICES"];
+const TITLES= ["LIVE STRESS FREE", "LEASE GUARANTEES", "FINANCE HANDLED", "TOP SERVICES"];
 
 const DESCRIPTIONS = [
   "Quis deserunt tempor consectetur id ea. Aute sunt eu minim nostrud officia excepteur duis et tempor do dolor culpa. Cillum nostrud quis magna consequat.",
@@ -32,7 +33,7 @@ const Paragraphs = [
 useEffect(() => {
  const intervalId = setInterval(() =>
     setIndex(index => index + 1),
-    4000 // every 3 seconds
+    2500 // every 3 seconds
   );
   return () => clearTimeout(intervalId);
 }, [])
@@ -54,7 +55,7 @@ useEffect(() => {
               <p>of managing your property</p>
               <br/>
               <div className='transitionTextDiv'>
-              <h1>
+              <h2 className='subTitle1'>
               <TextTransition
               className='colorText big'
                text={ TITLES[index % TITLES.length]}
@@ -62,7 +63,7 @@ useEffect(() => {
 
                inline
              />
-             </h1>
+             </h2>
              <h4>
              <TextTransition
                text={DESCRIPTIONS[index % DESCRIPTIONS.length]}
@@ -76,11 +77,13 @@ useEffect(() => {
              </div>
               <div className='btnDiv'>
                 <button className='btn1'>MORE SERVICES</button>
-                <button className='btn1'>LANDLORDS GUILDBOOK</button>
+                <button className='btn1'>LANDLORD'S GUIDE-BOOK</button>
               </div>
+              <a href="#secondDiv"><HiOutlineArrowCircleDown className='downArrow'/></a>
+              <p className='colorText'>to services</p>
             </div>
           </div>
-          <div className='secondDiv' >
+          <div className='secondDiv' id='secondDiv'   >
             <div className='secDivBox' id='box1' style={{backgroundImage: 'url(../box1.jpg'}}>
               <div className='secDivEffect' >
                 <div className='fadeBox' onClick= {(e) => navigate('/owner_portal')} >
@@ -98,7 +101,7 @@ useEffect(() => {
                 <div className='fadeBox' onClick= {(e) => navigate('/browse')} >
                   <div className='boxText'>
                     <h1>RENTAL SEARCH</h1>
-                    <p>Complete care of your property or proerties.</p>
+                    <p>Complete care of your property or properties.</p>
                     <p>Taking care of your investment</p>
                     <p className='hideText'>Learn More></p>
                   </div>
@@ -110,7 +113,7 @@ useEffect(() => {
                 <div className='fadeBox' onClick= {(e) => navigate('/owner_portal')}>
                   <div className='boxText'>
                     <h1>OWNER SERVICES</h1>
-                    <p>Complete care of your property or proerties.</p>
+                    <p>Complete care of your property or properties.</p>
                     <p>Taking care of your investment</p>
                     <p className='hideText'>Learn More></p>
                   </div>
@@ -122,7 +125,7 @@ useEffect(() => {
                 <div className='fadeBox' onClick= {(e) => navigate('/browse')} >
                   <div className='boxText'>
                     <h1>RENTAL SERVICES</h1>
-                    <p>Complete care of your property or proerties.</p>
+                    <p>Complete care of your property or properties.</p>
                     <p>Taking care of your investment</p>
                     <p className='hideText'>Learn More></p>
                   </div>
@@ -132,14 +135,7 @@ useEffect(() => {
 
           <div className='bottomDiv'>
             <div className='bottomDivTop'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-               eiusmod tempor incididunt ut labore et dolore magna aliqua.
-               <br/>Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-              irure dolor <br/>in reprehenderit in voluptate velit esse cillum
-              dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident,<br/> sunt in culpa qui officia deserunt
-              <br/>mollit anim id est laborum.</p>
+            <h2>What are people saying?</h2>
              <TextTransition
                text={Paragraphs[index % Paragraphs.length]}
                springConfig={presets.gentle}

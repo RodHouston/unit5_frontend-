@@ -69,7 +69,7 @@ export default function About() {
           <Fade left>
             <h1> Shawna Houston</h1><span className='colorText'>PRNCIPAL BROKER, OWNER</span>
             <p>Shawna manages the real estate sales operations and helps our agents
-             with sales and rental transactions. SHawna has been a licensed Realtor
+             with sales and rental transactions. Shawna has been a licensed Realtor
              since 1998 and has worked extensively in the property market.
              She is also responsible for marketing efforts for S&R Property Management.</p>
              </Fade>

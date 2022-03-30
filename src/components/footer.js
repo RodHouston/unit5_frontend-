@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink, Link, useNavigate } from "react-router-dom";
-import axios from 'axios'
-import { MdHomeWork, MdRealEstateAgent} from 'react-icons/md';
+import { MdRealEstateAgent} from 'react-icons/md';
 import {FaReact, FaNode} from 'react-icons/fa';
 import {DiDjango, DiPostgresql} from 'react-icons/di';
 
@@ -94,7 +92,7 @@ return(
     </div>
     <div className='footerText'>
     <p>© 2022 S&R Property Management, LLC. All Rights Reserved. Website
-    created by Roderick Houston Contact Us Privacy Policy</p>
+    created by Roderick Houston </p>
 
   </div>
   </div>

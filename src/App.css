@@ -14,9 +14,7 @@ html {
 font-family: 'Cabin', sans-serif;
 font-family: 'Cormorant Garamond', serif;
 <Footer/> */
-#root{
 
-}
 h1, h2{
   font-family: 'EB Garamond', serif;
 }
@@ -24,12 +22,9 @@ p{
   font-weight: bold;
   font-family: 'Cabin', sans-serif;
 }
-
 .mainDiv{
-  width: 100%;
-  background-size: 100% ;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
 }
 .center{
   margin: 0 auto;
@@ -96,16 +91,22 @@ p{
   padding:0 20px;
   color: white;
   border-left: 2px solid white;
+  margin-bottom: 10px;
 }
 .links.active {
   color: rgba(0, 0, 0, 0.8);
   background:rgb(0, 194, 159);
-
+  background: radial-gradient(circle,
+    rgba(0, 194, 159,1) 0%, rgba(0, 194, 159,.6) 10%,
+    rgba(0, 194, 159,0) 100%);
 }
 .links:hover{
   color: rgba(0, 0, 0, 0.8);
   text-decoration: underline;
   background:rgba(0, 134, 110, 1);
+  background: radial-gradient(circle,
+    rgba(0, 194, 159,1) 0%, rgba(0, 194, 159,1) 10%,
+    rgba(0, 194, 159,0) 100%);
 }
 .topLink{
   color: rgb(0, 194, 159);
@@ -122,13 +123,19 @@ p{
   margin: 5px 20px;
   color: rgb(187, 187, 187);
 }
+.subTitle1{
+  margin: 5px auto;
+  font-size: 3.5vw;
+  color: rgb(187, 187, 187);
+  text-align: center;
+  width: 100%;
+}
 .subTitle2{
   margin: 5px auto;
   font-size: 3vw;
   color: rgb(187, 187, 187);
   text-align: center;
   width: 100%;
-
 }
 .text-transtion_placeholder{
   text-align: center;
@@ -168,7 +175,7 @@ p{
   background-color: yellow;
   z-index: -2;
   background-color: rgba(0, 0, 0, 0.45);
-
+  /* background-image: url('../bg1.jpeg'); */
   background-size: auto;
 }
 .topCarouselEffect{
@@ -201,11 +208,43 @@ p{
 }
 .transitionTextDiv{
   display: flex;
+  height: 250px;
   flex-direction: column;
   justify-content: center;
   min-height: 120px;
-
-
+}
+.downArrow{
+  width: 50px;
+  height: 50px;
+  color:rgba(0, 134, 110, 1);
+}
+.downArrow:hover{
+  /* transform: scale(1.1); */
+  animation-name: bounce;
+  animation-duration: 800ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  cursor:pointer;
+}
+@keyframes bounce {
+  15% {
+    transform: translateY(-3px);
+  }
+  35% {
+    transform:  translateY(3px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+  60% {
+    transform: translateY(1px);
+  }
+  85% {
+    transform: translateY(-.5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 .btnDiv{
   margin: 20px;
@@ -237,10 +276,9 @@ p{
 }
 .secondDiv{
   display: flex;
-
   flex-wrap: wrap;
   width: 100%;
-  height:800px;
+
   /* background-color: blue; */
 }
 
@@ -294,14 +332,14 @@ background-size: 100% 100%;
 .bottomDiv{
   display: flex;
   width: 80%;
-  min-height: 450px;
+  min-height: 300px;
   background-color: rgba(0, 0, 0, 0.6);
   text-align: center;
   margin:  0 auto;
 }
 .bottomDivTop{
   width: 100%;
-  min-height: 400px;
+  min-height: 300px;
   text-align: center;
   padding: 50px;
   line-height:2;
@@ -349,7 +387,9 @@ background-size: 100% 100%;
   min-width: 100%;
   min-height: 100%;
   margin: auto;
+  cursor: pointer;
 }
+
 .houseCardInfo{
   display: flex;
   flex-direction: column;
@@ -480,7 +520,9 @@ background-size: 100% 100%;
 
 }
 .searchForm{
+  width: 80%;
   margin: 30px auto;
+
 }
 
 
@@ -518,7 +560,7 @@ background-size: 100% 100%;
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 350px;
+  min-height: 350px;
   line-height: 1.5;
   justify-content: center;
   align-items: center;
@@ -527,6 +569,7 @@ background-size: 100% 100%;
 }
 .addForm{
   display: flex;
+  width: 80%;
   flex-direction: column;
   margin: auto;
 }
@@ -538,7 +581,9 @@ background-size: 100% 100%;
 .set{
   display: flex;
   flex-direction: row;
+  flex-wrap:   wrap;
   margin: 10px auto;
+  justify-content: center;
 
 }
 .input2{
@@ -1230,7 +1275,7 @@ color: rgb(187, 187, 187);
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 375px;
+  height: 100%;
   line-height: 1.5;
   justify-content: center;
   align-items: center;
@@ -1361,6 +1406,27 @@ color: rgb(187, 187, 187);
    }
    .aboutBoxEffect{
      margin: auto;
+   }
+   .formReg{
+     width: 100%;
+     height: 100%;
+   }
+   .regSet{
+     flex-direction: column;
+   }
+   .password{
+     width: 100%;
+
+   }
+   .set{
+     flex-direction: column;
+     width: 100%;
+   }
+   .serviceItems{
+     padding: 10px;
+   }
+   .bottomDivTop{
+     height: 450px;
    }
 
  }

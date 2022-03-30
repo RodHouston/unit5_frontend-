@@ -12,7 +12,7 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[0-9]).{8,24}$/;
 
 export const Register = () => {
 
-  const userRef = useRef();
+
   const errRef = useRef();
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
@@ -20,21 +20,19 @@ export const Register = () => {
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
 
-  const [matchPwd, setMatchPwd] = useState('');
+
   const [validMatch, setValidMatch] = useState(false);
   const [matchFocus, setMatchFocus] = useState(false);
 
   const [passwordShown, setPasswordShown] = useState(false);
 
-  const [errMsg, setErrMsg] = useState('');
+;
 
-  const [cU ,setCU] = useState(sessionStorage.getItem("name"))
-  const [id,setId] = useState(sessionStorage.getItem("id"))
 
 
   const [profiles, setProfiles] = useState([]);
 
-  const location = useLocation();
+  
 
   let emptyProfile = { user: '', userphoto: '', status:'' }
   const [profile, setProfile] = useState(emptyProfile)
@@ -94,78 +92,60 @@ export const Register = () => {
         console.log(pro)
       sessionStorage.setItem("name", username);
       getPeople()
-
-
-
         createProfile(pro)
+      })
+    }catch (err) {
+        errRef.current.focus();
+    }
+      }
+
+  const handleReg = async e => {
+    e.preventDefault();
+    const v1 = USER_REGEX.test(username);
+    const v2 = PWD_REGEX.test(password);
+    let success = true
+    if (!v1 || !v2) {
+      alert("Invalid Entry");
+      return;
+    } else {
+      people.filter((peep) => {
+        if (peep.username == username){
+          alert("Username Taken");
+          success = false
+          return;
+        }
+      })
+    }
+    if (success){
+      regUser({username, password, first_name, last_name, email});
+        console.log('reg button hit ');
+        console.log('success');
+      } else {
+        console.log('no success');
+      }
+    }
 
 
+  const handlePass = (event) => {
+    setPassword(event.target.value)
 
-
-
-//try
-
-
-
-
-      // navigate('/owner_portal')
-
-    })
-}catch (err) {
-    
-    errRef.current.focus();
-}
-
+  }
+  const handleConfirmPass = (event) => {
+    setConfirmPass(event.target.value)
   }
 
 
-    const handleReg = async e => {
-        e.preventDefault();
-        const v1 = USER_REGEX.test(username);
-        const v2 = PWD_REGEX.test(password);
-        let success = true
-        if (!v1 || !v2) {
-          alert("Invalid Entry");
-          return;
-        } else {
-          people.filter((peep) => {
-            if (peep.username == username){
-              alert("Username Taken");
-              success = false
-              return;
-            }
-          })
-        }
-        if (success){
-          regUser({username, password, first_name, last_name, email});
-            console.log('reg button hit ');
-            console.log('success');
-          } else {
-            console.log('no success');
-          }
-        }
+  const createProfile = (p) => {
+    axios
+      .post('https://serene-forest-42655.herokuapp.com/api/profile', p)
+      .then((response) => {
+        console.log(response)
 
+      }).then(
+        navigate('/owner_portal')
+      )
 
-    const handlePass = (event) => {
-      setPassword(event.target.value)
-
-    }
-    const handleConfirmPass = (event) => {
-      setConfirmPass(event.target.value)
-    }
-
-
-    const createProfile = (p) => {
-      axios
-        .post('https://serene-forest-42655.herokuapp.com/api/profile', p)
-        .then((response) => {
-          console.log(response)
-
-        }).then(
-          navigate('/owner_portal')
-        )
-
-    }
+  }
 
   useEffect(() => {
    getPeople()
@@ -200,13 +180,13 @@ export const Register = () => {
               onBlur={() => setUserFocus(false)}
             />
           </div>
-          <p id="uidnote" className={userFocus && username && !validName ? "instructions" : "offscreen"}>
+          <p className={userFocus && username && !validName ? "instructions" : "offscreen"}>
             4 to 24 characters.<br />
             Must begin with a letter.<br />
             Letters, numbers, underscores, hyphens allowed.
           </p>
           <div className='regSet'>
-            <div className='pair2 '>
+            <div className='pair2 password'>
               <label htmlFor='password' > Password: </label>
               <input
                 className="inputReg2 "
@@ -261,7 +241,7 @@ export const Register = () => {
             <input className="inputReg" type='email' name='email'  onChange={e => setEmail(e.target.value)} placeholder="Email" required />
           </div>
           <div className=' regSet' >
-            <div className='pair2'>
+            <div className='pair2 password'>
               <label htmlFor='firstname' > First Name: </label>
               <input className="inputReg2 " name="first_name" type="text"  onChange={e => setFirstName(e.target.value)} placeholder="First Name" required />
             </div>
@@ -273,7 +253,7 @@ export const Register = () => {
 
 
 
-          <div className='set'>
+          <div className='regSet'>
 
             <div className='pair'>
             <label htmlFor="userphoto">Photo: </label>

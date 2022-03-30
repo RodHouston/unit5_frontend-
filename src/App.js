@@ -1,28 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Add from './components/Add.js'
-import Edit from './components/Edit.js'
 import AddHome from './pages/addHome'
-import  AddPhoto from './components/addPhotos.js'
 import { Nav } from "./components/nav";
-import { Footer } from "./components/footer";
-// import { Login } from "./pages/login";
 import { EditProfile} from "./pages/EditProfile";
 import { BrowseHomes } from "./pages/browseHomes";
 import { HomeShow } from "./pages/homeShow";
 import { OwnersPortal } from "./pages/OwnersPortal";
 import { Home} from "./pages/home";
 import { Register} from "./pages/Register";
-import { UserProvider } from './components/contexts/userContext'
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { Routes, Route } from "react-router-dom";
 import Services from './components/Services/Services';
 import About from './components/About/About';
 import Login from './components/Login/Login';
-import useToken from './components/App/useToken';
+
 
 
 // function setToken(userToken) {
@@ -39,9 +30,8 @@ import useToken from './components/App/useToken';
 
 const App = () => {
 
-  let [people, setPeople] = useState([])
-  let [homes, setHomes] = useState([])
-  let [photos, setPhotos] = useState([])
+
+
 
 
   const [ token, setToken ] = useState('');
@@ -65,85 +55,75 @@ const App = () => {
    }
 
 
-
-  const getPeople = () => {
-   axios
-     .get('https://serene-forest-42655.herokuapp.com/api/users')
-     .then(
-       (response) => setPeople(response.data),
-       (err) => console.error(err)
-     )
-     .catch((error) => console.error(error))
-  }
-
-  const getHomes = () => {
-   axios
-     .get('https://serene-forest-42655.herokuapp.com/api/homes')
-     .then(
-       (response) => setHomes(response.data),
-       (err) => console.error(err)
-     )
-     .catch((error) => console.error(error))
-  }
-
-  const getPhotos = () => {
-   axios
-     .get('https://serene-forest-42655.herokuapp.com/api/photos')
-     .then(
-       (response) => setPhotos(response.data),
-       (err) => console.error(err)
-     )
-     .catch((error) => console.error(error))
-  }
-
-
-  const handleDelete = (event) => {
-  axios
-    .delete('https://serene-forest-42655.herokuapp.com/api/users/' + event.target.value)
-    .then((response) => {
-      getPeople()
-    })
-}
-
-  const handleCreate = (addPerson) => {
-    axios
-      .post('https://serene-forest-42655.herokuapp.com/api/users', addPerson)
-      .then((response) => {
-        console.log(response)
-        getPeople()
-      })
-  }
-  const handleCreateHome = (addHome) => {
-    axios
-      .post('https://serene-forest-42655.herokuapp.com/api/homes', addHome)
-      .then((response) => {
-        console.log(response)
-        getHomes()
-      })
-  }
-
-  const handleCreatePhoto = (addPhoto) => {
-    axios
-      .post('https://serene-forest-42655.herokuapp.com/api/photos', addPhoto)
-      .then((response) => {
-        console.log(response)
-        getHomes()
-      })
-  }
-
-  const handleUpdate = (editPerson) => {
-  console.log(editPerson)
-  axios
-    .put('https://serene-forest-42655.herokuapp.com/api/users/' + editPerson.id, editPerson)
-    .then((response) => {
-      getPeople()
-    })
-}
+//
+//   const getHomes = () => {
+//    axios
+//      .get('https://serene-forest-42655.herokuapp.com/api/homes')
+//      .then(
+//        (response) => setHomes(response.data),
+//        (err) => console.error(err)
+//      )
+//      .catch((error) => console.error(error))
+//   }
+//
+//   const getPhotos = () => {
+//    axios
+//      .get('https://serene-forest-42655.herokuapp.com/api/photos')
+//      .then(
+//        (response) => setPhotos(response.data),
+//        (err) => console.error(err)
+//      )
+//      .catch((error) => console.error(error))
+//   }
+//
+//
+//   const handleDelete = (event) => {
+//   axios
+//     .delete('https://serene-forest-42655.herokuapp.com/api/users/' + event.target.value)
+//     .then((response) => {
+//       getPeople()
+//     })
+// }
+//
+//   const handleCreate = (addPerson) => {
+//     axios
+//       .post('https://serene-forest-42655.herokuapp.com/api/users', addPerson)
+//       .then((response) => {
+//         console.log(response)
+//         getPeople()
+//       })
+//   }
+//   const handleCreateHome = (addHome) => {
+//     axios
+//       .post('https://serene-forest-42655.herokuapp.com/api/homes', addHome)
+//       .then((response) => {
+//         console.log(response)
+//         getHomes()
+//       })
+//   }
+//
+//   const handleCreatePhoto = (addPhoto) => {
+//     axios
+//       .post('https://serene-forest-42655.herokuapp.com/api/photos', addPhoto)
+//       .then((response) => {
+//         console.log(response)
+//         getHomes()
+//       })
+//   }
+//
+//   const handleUpdate = (editPerson) => {
+//   console.log(editPerson)
+//   axios
+//     .put('https://serene-forest-42655.herokuapp.com/api/users/' + editPerson.id, editPerson)
+//     .then((response) => {
+//       getPeople()
+//     })
+// }
 
   useEffect(() => {
-   getPeople()
-   getHomes()
-   getPhotos()
+   // getPeople()
+   // getHomes()
+   // getPhotos()
   }, [])
   return (
     <>

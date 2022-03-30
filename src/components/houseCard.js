@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import { useNavigate } from "react-router-dom";
 import { HomeShow } from "../pages/homeShow";
 //only need props as a param if we are passing in props to this component (we are going to here).
@@ -23,7 +23,7 @@ const HouseCard= (props) => {
     <>
       <div className="houseCard" key={home.id}>
         <div className='houseCardPhotoDiv'>
-          <img className="houseMainPhoto" src={home.coverphoto} />
+          <img className="houseMainPhoto" onClick={(e) => navigate('/show', {state:home})} src={home.coverphoto} />
         </div>
         <div className='houseCardInfo'>
           <h2><span className='colorText'>Rent: {home.rent} </span>/Month</h2>
