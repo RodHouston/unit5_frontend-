@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate, useLocation } from "react-router-dom";
 import { FaFacebookSquare, FaTwitterSquare, FaPinterestSquare, FaLinkedin, FaGithubSquare } from 'react-icons/fa'
+import { Footer } from "../components/footer";
+import { EditHome } from "./EditHome";
+
+
 
 export const HomeShow = (props) => {
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [home, setHome] = useState(location.state)
-  let emptyHome = { owner: '', type: '', street:'', city:'', state:'', }
-
-
-  const [house, setHouse] = useState(emptyHome)
-
 
   useEffect(() => {
     // if(home== null){
@@ -23,24 +23,29 @@ export const HomeShow = (props) => {
   }, [])
   return(
     <>
-    {home == null ? <h1> Turn back</h1> :
+    {home == null ? <>
+      <div className='fillPage'>
+      <h1> Please Select Property to View</h1>
+      <button className='btn1' id='delete' onClick={(e) => navigate('/browse')}>To Browse Page</button>
+      </div>
+      </>  :
       <div className="showDiv" >
         <div className="houseCardShow" key={home.id}>
           <div className='houseCardPhotoDivShow'>
             <img className="houseMainPhotoShow" src={home.coverphoto} />
             <button className='morePhotos btn1'> morePhotos</button>
+            <a href="#edit" className='editLinkBtn btn1'>Edit</a>
           </div>
           <div className="showDetailDiv" >
             <div className="showDetailDivEffect" >
             <h2>Property Description</h2>
             <p>{home.description}</p>
               <div className='socialLinkDiv'>
-              <FaFacebookSquare className='icons'/>
-              <FaTwitterSquare className='icons'/>
-              <FaPinterestSquare className='icons'/>
-              <FaLinkedin className='icons'/>
-              <FaGithubSquare className='icons'/>
-
+                <FaFacebookSquare className='icons'/>
+                <FaTwitterSquare className='icons'/>
+                <FaPinterestSquare className='icons'/>
+                <FaLinkedin className='icons'/>
+                <FaGithubSquare className='icons'/>
               </div>
             </div>
           </div>
@@ -51,7 +56,7 @@ export const HomeShow = (props) => {
               <h4 >Bath: {home.baths} bath(s)</h4>
               <h4 >Garage: {home.garage} car</h4>
             </div>
-            <div className='houseCardInfoShowRight'>
+            <div id='edit' className='houseCardInfoShowRight'>
               <h5>Street: {home.street}</h5>
               <h5>City: {home.city}</h5>
               <h5>State: {home.state}</h5>
@@ -62,13 +67,10 @@ export const HomeShow = (props) => {
             </div>
           </div>
         </div>
-        <div className="showBottomDiv" >
-
-        </div>
+        <EditHome home={home} />
       </div>
     }
-
-
-    </>
+    <Footer/>
+  </>
   )
 }

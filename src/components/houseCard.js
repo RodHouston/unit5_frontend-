@@ -19,14 +19,6 @@ const HouseCard= (props) => {
       setHome({ ...home, [event.target.name]: event.target.value })
     }
 
-    const goToShow =(house) => {
-
-
-      navigate('/show', {home:house})
-    }
-
-
-
   return (
     <>
       <div className="houseCard" key={home.id}>
@@ -42,7 +34,7 @@ const HouseCard= (props) => {
           <h4>City: {home.city}</h4>
           <h4>State: {home.state}</h4>
           <h5>Type: {home.type}</h5>
-          <h5>Id: {home.id}</h5>
+          <h5>Owner: {home.owner}</h5>
           <button className='btn2' onClick={(e) => navigate('/show', {state:home})}> More Details</button>
         </div>
       </div>

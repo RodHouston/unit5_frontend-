@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 
 
@@ -8,11 +8,16 @@ import { useNavigate } from "react-router-dom";
 
 export const EditProfile = () => {
 
-  const [username, setUserName] = useState();
-  const [password, setPassword] = useState();
-  let [profiles, setProfiles] = useState([])
 
-  let emptyProfile = { user: '', userphoto: '', status:'', }
+  const [cU ,setCU] = useState(sessionStorage.getItem("name"))
+  const [id,setId] = useState(sessionStorage.getItem("id"))
+  const [username, setUserName] = useState();
+
+  const [profiles, setProfiles] = useState([]);
+
+  const location = useLocation();
+
+  let emptyProfile = { user: id, userphoto: '', status:'' }
   const [profile, setProfile] = useState(emptyProfile)
 
 
@@ -60,14 +65,7 @@ console.log(profiles);
   return (
     <>
     <h1>hi</h1>
-    {profiles.map((pro) => {
-      return(
-        <>
-        <img src={pro.userphoto}/>
-      <h1>hello</h1>
-      </>
-    )
-    })}
+
 
     <form className="addForm" onSubmit={handleSubmit}>
     <div className='set'>
@@ -81,12 +79,23 @@ console.log(profiles);
       </div>
       <div className='pair'>
       <label htmlFor="status">Owner: </label>
-      <input className='input2' type="text" name="status" defaultValue={profile.status} onChange={handleChange} />
+      <select
+        className="input2"
+        name='status'
+        defaultValue={profile.status}
+        onChange={handleChange}>
+        <option key="select-ANY" defaultValue='owner' >
+          Owner
+        </option>
+        <option defaultValue='renter' >
+          Renter/Tenant
+        </option>
+      </select>
       </div>
         <input type="submit" />
       </div>
       </form>
-
+      <img src={profile.userphoto}/>
     </>
   )
 };

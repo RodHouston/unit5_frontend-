@@ -7,6 +7,7 @@ import Edit from './components/Edit.js'
 import AddHome from './pages/addHome'
 import  AddPhoto from './components/addPhotos.js'
 import { Nav } from "./components/nav";
+import { Footer } from "./components/footer";
 // import { Login } from "./pages/login";
 import { EditProfile} from "./pages/EditProfile";
 import { BrowseHomes } from "./pages/browseHomes";
@@ -14,6 +15,7 @@ import { HomeShow } from "./pages/homeShow";
 import { OwnersPortal } from "./pages/OwnersPortal";
 import { Home} from "./pages/home";
 import { Register} from "./pages/Register";
+import { UserProvider } from './components/contexts/userContext'
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -44,20 +46,23 @@ const App = () => {
 
   const [ token, setToken ] = useState('');
 
-  const [ userToken, setUserToken ] = useState(sessionStorage.getItem('name'));
+  const [ userToken, setUserToken ] = useState(sessionStorage.getItem("token"));
+  const [ userName, setUserName ] = useState(sessionStorage.getItem("name"));
 
 
   const userLogin = (tok) => {
-    sessionStorage.setItem('token', JSON.stringify(tok));
-    sessionStorage.setItem('name', 'rossss');
-    const tokenString = sessionStorage.getItem('name');
+    sessionStorage.setItem("token", JSON.stringify(tok));
+
+    const tokenString = sessionStorage.getItem("token");
     const userToke = JSON.parse(tokenString);
     setToken(tok)
     setUserToken(userToke)
     console.log('this it app token '+ userToken);
     // console.log('this it app token '+ token);
   }
+   const curUser = (nam) => {
 
+   }
 
 
 
@@ -140,48 +145,27 @@ const App = () => {
    getHomes()
    getPhotos()
   }, [])
-
-
-  // if(!token) {
-  //   return <Login setToken={setToken} />
-  // }
- // <Route exact path="/register" element={<Register/>} />
-
   return (
     <>
-    <div className='mainDiv'>
-
-
-          <header className='header'>
-            <Nav/>
-          </header>
-          <div className="container1">
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/login" element={<Login userLogin={userLogin} />} />
-              <Route exact path="/register" element={<Register/>} />
-
-              <Route exact path="/browse" element={<BrowseHomes />} />
-              <Route exact path="/show" element={<HomeShow/>} />
-              <Route exact path="/owner_portal" element={<OwnersPortal token= {userToken}/>} />
-              // <Route exact path="/dashboard" element={<OwnersPortal/>} />
-              <Route exact path="/addHome" element={<AddHome/>} />
-
-              <Route exact path="/editProfile" element={<EditProfile/>} />
-
-
-              <Route path="/services" element={<Services/>}/ >
-
-              <Route path="/about" element={<About />}/>
-
-
-
-            </Routes>
-          </div>
-
-
-    </div>
-
+      <div className='mainDiv'>
+        <header >
+          <Nav/>
+        </header>
+        <div className="container1">
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/login" element={<Login userLogin={userLogin} />} />
+            <Route exact path="/register" element={<Register/>} />
+            <Route exact path="/browse" element={<BrowseHomes />} />
+            <Route exact path="/show" element={<HomeShow/>} />
+            <Route exact path="/owner_portal" element={<OwnersPortal token= {userToken} name= {userName}/>} />
+            <Route exact path="/addHome" element={<AddHome/>} />
+            <Route exact path="/editProfile" element={<EditProfile/>} />
+            <Route path="/services" element={<Services/>}/ >
+            <Route path="/about" element={<About />}/>
+          </Routes>
+        </div>
+      </div>
     </>
   )
 }

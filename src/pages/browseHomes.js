@@ -3,6 +3,7 @@ import HouseCard from '../components/houseCard'
 import Type from '../components/Type'
 import { useNavigate } from "react-router-dom";
 import { BiArrowFromTop, BiArrowFromBottom  } from 'react-icons/bi';
+import { Footer } from "../components/footer";
 
 import axios from 'axios'
 
@@ -85,17 +86,17 @@ export const BrowseHomes = (props) => {
   return (
     <>
 
-    <div className="searchHomesDiv" style={{ height: toggle ? "175px" : "45px" }}>
+    <div className="searchHomesDiv" style={{ height: toggle ? "200px" : "45px" }}>
       <div className='searchTitle'>
-      <div className='sTitle' onClick={(event) => show()} style={{ width: toggle ? "100%" : "310px"} }>
-        {toggle ? <BiArrowFromBottom className='iconArrow' /> :
+        <div className='sTitle' onClick={(event) => show()} style={{ width: toggle ?  "310px": "100%" }  }>
+          {toggle ? <BiArrowFromBottom className='iconArrow' /> :
 
-        <BiArrowFromTop className='iconArrow' />}
-        <h2 > Find The Perfect Home </h2>
-        {toggle ? <BiArrowFromBottom className='iconArrow' /> :
+          <BiArrowFromTop className='iconArrow' />}
+          <h2 > Find The Perfect Home </h2>
+          {toggle ? <BiArrowFromBottom className='iconArrow' /> :
 
-        <BiArrowFromTop className='iconArrow' />}
-      </div>
+          <BiArrowFromTop className='iconArrow' />}
+        </div>
       </div>
       <div className='searchForm' >
         <div className='pair'>
@@ -123,7 +124,7 @@ export const BrowseHomes = (props) => {
         <div className='pair'>
           <label htmlFor='properties'>Property Type:</label>
           <select
-            className="inputEdit"
+            className="input2"
             value={homes.type}
             onChange={event => setType(event.target.value)}>
             <option key="select-ANY" value="ANY">
@@ -140,7 +141,9 @@ export const BrowseHomes = (props) => {
     </div>
   </div>
   <div className="homesDiv">
-    <div className="homesDiv2">
+
+    <div className="homesDiv2"> 
+
       {homes.filter(home => {
         if(type==="ANY"){
           if (home === '') {
@@ -153,13 +156,15 @@ export const BrowseHomes = (props) => {
           }
         }).reverse().map((home) => {
           return (
-            <div className="homeBox" key={home.id}  >
+            <div key={home.id}>
+            <h1> {home.size}</h1>
               <HouseCard house={home} />
             </div>
             )}
           )}
         </div>
       </div>
+      <Footer/>
     </>
   )
 }

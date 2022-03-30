@@ -1,13 +1,56 @@
-import React from 'react';
+
+import React, {  useEffect, useState } from 'react'
+import { Footer } from "../../components/footer";
+import TextTransition, { presets } from "react-text-transition";
+
 
 export default function Services() {
+
+  const TEXTS = ['PROVIDING EASE OF LIFE', 'PEACE OF MIND',
+  "PROPERTY INVESTMENTS",
+  "FINIANCES AND COLLECTIONS",
+  "MULTIPLE SERVICES",
+  "POLICIES"
+  ]
+
+
+const randomNumber = () => Math.floor(Math.random() * 5 - 1)
+  const [index, setIndex] = useState(0);
+  const [index2, setIndex2] = useState(0);
+  const [texts, setText] = useState(TEXTS[3]);
+
+  useEffect(() => {
+
+    const intervalId = setInterval(() =>
+      setIndex(index => index + 1),
+      3000
+    );
+    return () => clearTimeout(intervalId);
+  }, [])
+
+
+
+//   {texts.split("").map((n, i) => (
+// ))}
+//
+
   return(
 
     <>
       <div className='servicesDiv'>
         <div className='servicesBoxDivTop' >
-          <div className='servicesTitle' >
-            <h2>PROVIDING EASE OF LIFE AND PEACE OF MIND</h2>
+          <div className='servicesTitleBox'>
+            <div className='servicesTitle'>
+              <TextTransition
+              className=' colorText2'
+              text={ TEXTS[index % TEXTS.length] }
+              // springConfig={presets.slow}
+              springConfig={presets.gentle}
+              style={{ margin: "0 4px" }}
+              inline
+              overflow
+              />
+            </div>
           </div>
         </div>
         <div className='servicesBoxDiv' >
@@ -45,6 +88,7 @@ export default function Services() {
 
         </div>
       </div>
+      <Footer/>
     </>
 
   );
