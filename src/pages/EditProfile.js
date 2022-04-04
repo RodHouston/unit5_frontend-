@@ -47,12 +47,12 @@ export const EditProfile = (props) => {
 
 
 
-  const handleChange = (event) => {
-    setProfile({ ...profile, [event.target.name]: event.target.value })
+  const handleChange =  (event) => {
+     setProfile({ ...profile, [event.target.name]: event.target.value })
   }
 
-  const getProfile = () => {
-   axios
+  const getProfile = async () => {
+  await axios
      .get('https://serene-forest-42655.herokuapp.com/api/profile')
      .then(
        (response) => setProfiles(response.data),
@@ -62,9 +62,9 @@ export const EditProfile = (props) => {
 
   }
 
-  const handleUpdatePro = (editPro) => {
+  const handleUpdatePro = async (editPro) => {
   console.log(editPro)
-  axios
+    await axios
     .put('https://serene-forest-42655.herokuapp.com/api/profile/' + editPro.id, editPro)
     .then((response) => {
 
@@ -90,7 +90,7 @@ export const EditProfile = (props) => {
        console.log(pro)
      })
    }
-   
+
 
   // const handleUpdateUser = (editUser) => {
   // console.log(editUser)

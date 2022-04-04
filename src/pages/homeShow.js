@@ -13,6 +13,8 @@ export const HomeShow = (props) => {
   const navigate = useNavigate();
 
   const [home, setHome] = useState(location.state)
+  const [cU ,setCU] = useState(sessionStorage.getItem("name"))
+// console.log(home.owner);
 
   useEffect(() => {
     // if(home== null){
@@ -26,15 +28,17 @@ export const HomeShow = (props) => {
     {home == null ? <>
       <div className='fillPage'>
       <h1> Please Select Property to View</h1>
-      <button className='btn1' id='delete' onClick={(e) => navigate('/browse')}>To Browse Page</button>
+      <button className='btn1'  onClick={(e) => navigate('/browse')}>To Browse Page</button>
       </div>
       </>  :
       <div className="showDiv" >
         <div className="houseCardShow" key={home.id}>
           <div className='houseCardPhotoDivShow'>
             <img className="houseMainPhotoShow" src={home.coverphoto} />
-            <button className='morePhotos btn1'> morePhotos</button>
+            <button className='morePhotos btn1' onClick={(e) => navigate('/photos', {state:home})} > morePhotos</button>
+            {cU === home.owner ?
             <a href="#edit" className='editLinkBtn btn1'>Edit</a>
+            :null}
           </div>
           <div className="showDetailDiv" >
             <div className="showDetailDivEffect" >
@@ -67,7 +71,9 @@ export const HomeShow = (props) => {
             </div>
           </div>
         </div>
+        {cU === home.owner ?
         <EditHome home={home} />
+        :null}
       </div>
     }
     <Footer/>

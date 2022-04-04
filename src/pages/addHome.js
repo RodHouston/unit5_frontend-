@@ -18,7 +18,7 @@ const AddHome = (props) => {
 
   const handleChange = (event) => {
     setHome({ ...home, [event.target.name]: event.target.value })
-    console.log('this is owner ' +home.owner);
+    console.log('this is owner ' + home.owner);
   }
 
   const getPeople = () => {

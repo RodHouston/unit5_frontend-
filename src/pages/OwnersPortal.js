@@ -222,7 +222,7 @@ export const OwnersPortal = (props) => {
                         <div className='houseContainerPro' key={filteredHome.id}  >
                           <div className="houseCardProfile" >
                             <div className='houseCardPhotoDivPro'>
-                              <img className="houseMainPhotoPro" src={filteredHome.coverphoto} />
+                              <img className="houseMainPhotoPro" src={filteredHome.coverphoto} onClick={(e) => navigate('/show', {state:filteredHome})} />
                             </div>
                             <div className='houseCardInfoPro'>
                               <h4>Street: {filteredHome.street}</h4>

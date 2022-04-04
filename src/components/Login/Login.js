@@ -10,9 +10,14 @@ export default function Login(props) {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
 
+  const [passwordShown, setPasswordShown] = useState(false);
 
   let navigate = useNavigate();
 
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
 
   const getPeople = () => {
    axios
@@ -25,7 +30,6 @@ export default function Login(props) {
   }
 
   async function loginUser(credentials) {
-
    // return fetch('https://serene-forest-42655.herokuapp.com/currentuser/', {
    return fetch("https://serene-forest-42655.herokuapp.com/auth/", {
       method: "POST",
@@ -36,10 +40,8 @@ export default function Login(props) {
     }).then((response) => {;
       if (response.ok){
         return people.map((peep) => {
-          console.log('pressed '+ peep.username)
-        
+          // console.log('pressed '+ peep.username)
           if(peep.username === username){
-
             console.log('we in here  ' + peep.username);
             sessionStorage.setItem("name", peep.username);
             sessionStorage.setItem("id", peep.id);
@@ -86,8 +88,15 @@ export default function Login(props) {
         </label>
         <label>
           <p>Password</p>
-          <input className="inputReg2" type="password" onChange={e => setPassword(e.target.value)} required/>
+          <input className="inputReg2" type={passwordShown ? "text" : "password"} onChange={e => setPassword(e.target.value)} required/>
         </label>
+        <div className='showPass'>
+          <label className="switch">
+            <input type="checkbox" onChange={togglePassword}/>
+            <span className="slider round"></span>
+          </label>
+          {passwordShown ? <>Hide Password</> : <>Show Password</>}
+        </div>
           <button className="btn2"type="submit">Submit</button>
 
 

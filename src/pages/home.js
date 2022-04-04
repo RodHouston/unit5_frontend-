@@ -50,7 +50,7 @@ useEffect(() => {
             <div className='customLogoBoxHome'>
               <MdRealEstateAgent className='customLogoHome'/>
               </div>
-              <h1>S&R PROPERTY MANAGEMENT</h1>
+              <h1 className='subTitle1'>S&R PROPERTY MANAGEMENT</h1>
               <p>Enjoy life. Let us handle the complications </p>
               <p>of managing your property</p>
               <br/>
@@ -88,7 +88,7 @@ useEffect(() => {
               <div className='secDivEffect' >
                 <div className='fadeBox' onClick= {(e) => navigate('/owner_portal')} >
                   <div className='boxText'>
-                    <h1>PROPERTY MANAGEMENT</h1>
+                    <h1 className='subTitle1'>PROPERTY MANAGEMENT</h1>
                     <p>Complete care of your property or proerties.</p>
                     <p>Taking care of your investment</p>
                     <p className='hideText'>Learn More></p>
@@ -100,7 +100,7 @@ useEffect(() => {
               <div className='secDivEffect' >
                 <div className='fadeBox' onClick= {(e) => navigate('/browse')} >
                   <div className='boxText'>
-                    <h1>RENTAL SEARCH</h1>
+                    <h1 className='subTitle1'>RENTAL SEARCH</h1>
                     <p>Complete care of your property or properties.</p>
                     <p>Taking care of your investment</p>
                     <p className='hideText'>Learn More></p>
@@ -112,7 +112,7 @@ useEffect(() => {
               <div className='secDivEffect' >
                 <div className='fadeBox' onClick= {(e) => navigate('/owner_portal')}>
                   <div className='boxText'>
-                    <h1>OWNER SERVICES</h1>
+                    <h1 className='subTitle1'>OWNER SERVICES</h1>
                     <p>Complete care of your property or properties.</p>
                     <p>Taking care of your investment</p>
                     <p className='hideText'>Learn More></p>
@@ -124,7 +124,7 @@ useEffect(() => {
               <div className='secDivEffect' >
                 <div className='fadeBox' onClick= {(e) => navigate('/browse')} >
                   <div className='boxText'>
-                    <h1>RENTAL SERVICES</h1>
+                    <h1 className='subTitle1'>RENTAL SERVICES</h1>
                     <p>Complete care of your property or properties.</p>
                     <p>Taking care of your investment</p>
                     <p className='hideText'>Learn More></p>

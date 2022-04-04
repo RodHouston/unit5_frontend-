@@ -13,6 +13,7 @@ import { Routes, Route } from "react-router-dom";
 import Services from './components/Services/Services';
 import About from './components/About/About';
 import Login from './components/Login/Login';
+import Photos from './components/addPhotos';
 
 
 
@@ -143,6 +144,7 @@ const App = () => {
             <Route exact path="/editProfile" element={<EditProfile/>} />
             <Route path="/services" element={<Services/>}/ >
             <Route path="/about" element={<About />}/>
+            <Route path="/photos" element={<Photos/>}/>
           </Routes>
         </div>
       </div>

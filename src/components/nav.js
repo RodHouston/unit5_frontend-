@@ -19,7 +19,7 @@ export const Nav = (props) => {
     sessionStorage.setItem("id", ' ');
     navigate('/')
   }
-  console.log(sessionStorage.getItem('id'));
+  // console.log(sessionStorage.getItem('id'));
   useEffect(() => {
     console.log(sessionStorage.getItem('id'));
     window
@@ -96,6 +96,15 @@ export const Nav = (props) => {
         <NavLink className="links" to="/about">
               About
         </NavLink>
+        {sessionStorage.getItem('id') ===' ' || sessionStorage.getItem('id') ===null ? <>
+        {matches ?   null :<>
+        <NavLink className="links " to="/login">
+          Login
+        </NavLink>
+        <NavLink className="links " to="/register">
+          Register
+        </NavLink>
+        </> } </>: null }
         {sessionStorage.getItem('id') ===' ' || sessionStorage.getItem('id') ===null ?  null:
         <button className='btn1 logOutBtn' onClick={logOut}>Logout</button>
         }
